@@ -18,10 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="1C4-9G-NvW">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="1C4-9G-NvW" userLabel="bg">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="tapper" translatesAutoresizingMaskIntoConstraints="NO" id="pxQ-6D-heR">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="tapper" translatesAutoresizingMaskIntoConstraints="NO" id="pxQ-6D-heR" userLabel="logo">
                                 <rect key="frame" x="22" y="61" width="556" height="119"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="556" id="Jh1-yP-S7b"/>
@@ -34,7 +34,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8Q-UD-1w9">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8Q-UD-1w9" userLabel="playButton">
                                 <rect key="frame" x="234" y="238" width="132" height="123"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="132" id="4rv-4C-crD"/>
@@ -53,8 +53,11 @@
                                         <exclude reference="xXL-c0-6zS"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="pressPlayButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gbC-zx-maS"/>
+                                </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How old are you?" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SRw-Bs-kjO">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How old are you?" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SRw-Bs-kjO" userLabel="textInput">
                                 <rect key="frame" x="202" y="404" width="196" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="R1W-nR-i8V"/>
@@ -75,6 +78,27 @@
                                     </mask>
                                 </variation>
                             </textField>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wjZ-yY-OKa" userLabel="tapButton">
+                                <rect key="frame" x="206" y="188" width="189" height="174"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="189" id="jga-Eb-h1m"/>
+                                    <constraint firstAttribute="height" constant="174" id="vrh-3G-6vd"/>
+                                </constraints>
+                                <state key="normal" image="PressButton"/>
+                                <connections>
+                                    <action selector="pressTapButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TrH-SF-h5z"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zuh-xp-EsU" userLabel="tapText">
+                                <rect key="frame" x="189" y="391" width="222" height="54.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="222" id="MTP-9B-cYk"/>
+                                    <constraint firstAttribute="height" constant="54.5" id="XAd-F1-sUW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" red="0.075846023857593536" green="0.7800220251083374" blue="0.089779563248157501" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -86,15 +110,19 @@
                             <constraint firstItem="i8Q-UD-1w9" firstAttribute="top" secondItem="SRw-Bs-kjO" secondAttribute="bottom" constant="18" id="Nqx-GB-7TH"/>
                             <constraint firstItem="SRw-Bs-kjO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="S3i-eM-gaY"/>
                             <constraint firstItem="pxQ-6D-heR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="2" id="TcL-nK-eKT"/>
+                            <constraint firstItem="wjZ-yY-OKa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TyC-PK-W7z"/>
                             <constraint firstItem="pxQ-6D-heR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UAH-7D-NK9"/>
                             <constraint firstItem="i8Q-UD-1w9" firstAttribute="centerX" secondItem="SRw-Bs-kjO" secondAttribute="centerX" id="VjX-8t-59l"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="i8Q-UD-1w9" secondAttribute="bottom" constant="40" id="YHH-u3-W2Y"/>
+                            <constraint firstItem="zuh-xp-EsU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YRt-nl-gMe"/>
                             <constraint firstItem="pxQ-6D-heR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="b5Y-uh-Wev"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pxQ-6D-heR" secondAttribute="trailing" constant="2" id="dJG-Rb-hom"/>
                             <constraint firstItem="pxQ-6D-heR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="2" id="dZf-Ge-iaR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pxQ-6D-heR" secondAttribute="trailing" constant="2" id="hVd-RX-INC"/>
                             <constraint firstAttribute="trailing" secondItem="1C4-9G-NvW" secondAttribute="trailing" id="iyO-fF-YKu"/>
                             <constraint firstItem="SRw-Bs-kjO" firstAttribute="centerX" secondItem="i8Q-UD-1w9" secondAttribute="centerX" id="kQL-bb-uCB"/>
+                            <constraint firstItem="zuh-xp-EsU" firstAttribute="top" secondItem="wjZ-yY-OKa" secondAttribute="bottom" constant="29" id="mYu-9w-A0c"/>
+                            <constraint firstItem="wjZ-yY-OKa" firstAttribute="top" secondItem="pxQ-6D-heR" secondAttribute="bottom" constant="20" id="oly-5T-UFA"/>
                             <constraint firstItem="1C4-9G-NvW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qwt-KU-jDH"/>
                             <constraint firstItem="1C4-9G-NvW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="sbb-xr-ljP"/>
                             <constraint firstItem="i8Q-UD-1w9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="snx-Uq-zRK"/>
@@ -117,15 +145,23 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="inputTextField" destination="SRw-Bs-kjO" id="fYW-mo-Nao"/>
+                        <outlet property="logoImg" destination="pxQ-6D-heR" id="WPf-d6-85l"/>
+                        <outlet property="playButton" destination="i8Q-UD-1w9" id="8A6-rM-y48"/>
+                        <outlet property="tapButton" destination="wjZ-yY-OKa" id="QZS-Ji-LnK"/>
+                        <outlet property="textLabel" destination="zuh-xp-EsU" id="V4s-iE-Z75"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="245" y="308"/>
+            <point key="canvasLocation" x="149" y="411"/>
         </scene>
     </scenes>
     <resources>
         <image name="Background" width="1200" height="1200"/>
         <image name="GreenButton-1" width="600" height="599"/>
+        <image name="PressButton" width="516" height="516"/>
         <image name="tapper" width="452" height="97"/>
     </resources>
 </document>

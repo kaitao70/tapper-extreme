@@ -9,17 +9,75 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    //Properties
+    var maxTaps: Int = 0
+    var currentTaps: Int = 0
+    
+    
+    //Outlets
+    @IBOutlet weak var logoImg: UIImageView!
+    @IBOutlet weak var inputTextField: UITextField!
+    @IBOutlet weak var playButton: UIButton!
+    
+    @IBOutlet weak var tapButton: UIButton!
+    @IBOutlet weak var textLabel: UILabel!
+    @IBAction func dismissKeyboard(sender: AnyObject) {
+        
+        inputTextField.resignFirstResponder()
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func pressTapButton(sender: UIButton!){
+        currentTaps += 1
+        updateTextLabel()
+        
+        if isGameOver(){
+            restartGame()
+        }
+        
     }
-
-
+    @IBAction func pressPlayButton(sender: UIButton!){
+   
+        
+        if inputTextField.text != nil && inputTextField.text != "" {
+            
+            logoImg.hidden = true
+            playButton.hidden = true
+            inputTextField.hidden = true
+            
+            tapButton.hidden = false
+            textLabel.hidden = false
+            
+            maxTaps = Int(inputTextField.text!)!
+            currentTaps = 2
+            
+            updateTextLabel()
+        }
+    }
+    
+    func updateTextLabel(){
+        textLabel.text = "\(currentTaps) Taps"
+    }
+    
+    func isGameOver() -> Bool {
+        if currentTaps >= maxTaps{
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    func restartGame(){
+        maxTaps = 0
+        textLabel.text = ""
+        
+        logoImg.hidden = false
+        playButton.hidden = false
+        inputTextField.hidden = false
+        
+        tapButton.hidden = true
+        textLabel.hidden = true
+        
+    }
 }
 
